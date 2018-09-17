@@ -66,3 +66,7 @@ eks_client_kubeconfig_file: "{{ k8s_kubeconfig_path }}"
 
 eks_client_iamauth_path: ~/bin/aws-iam-authenticator
 eks_client_iamauth_url: https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/linux/amd64/aws-iam-authenticator
+
+
+# Sample deployment
+sample_base_dir: "{{ playbook_dir }}/group_vars/all"
