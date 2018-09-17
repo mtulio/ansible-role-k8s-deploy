@@ -1,0 +1,16 @@
+---
+
+- name: "Deploy | {{ item_deploy.name }} | show resources"
+  debug:
+    msg: "{{ item }}"
+  with_items: "{{ item_deploy.files }}"
+
+- name: "Deploy | {{ item_deploy.name }} | applying"
+  shell: |
+    KUBECONFIG={{ k8s_kubeconfig_path }} {{ k8s_kubectl_path }} apply -f {{ item }}
+  register: ret_setup_resources
+  with_items: "{{ item_deploy.files }}"
+
+- name: "Deploy | {{ item_deploy.name }} | show the results of deploy"
+  debug:
+    var: ret_setup_resources

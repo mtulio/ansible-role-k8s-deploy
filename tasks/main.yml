@@ -1,0 +1,14 @@
+---
+
+- include_vars: "{{ k8s_deploy_vars_file }}"
+  when: k8s_deploy_vars_file
+
+- include: setup.yml
+  with_items: "{{ k8s_resources }}"
+  loop_control:
+    loop_var: item_app
+
+- include: deploy.yml
+  with_items: "{{ k8s_deploy_resources }}"
+  loop_control:
+    loop_var: item_deploy
