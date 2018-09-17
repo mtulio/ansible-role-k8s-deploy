@@ -1,0 +1,37 @@
+---
+
+# Kubernetes resources to deploy
+base_dir: "{{ playbook_dir }}/vars/k8s-deploy"
+k8s_resources:
+  - name: sample-namespace
+    resources:
+      - namespace
+    namespace: "{{ lookup('file', base_dir+'/sample/namespace.yaml') | from_yaml }}"
+
+  - name: webapp
+    namespace: sample
+    resources:
+      - service
+      - replica_set
+    service: "{{ lookup('file', base_dir+'/sample/webapp/service.yaml') | from_yaml }}"
+    replica_set: "{{ lookup('file', base_dir+'/sample/webapp/replica_set.yaml') | from_yaml }}"
+
+  - name: echoserver
+    namespace: sample
+    resources:
+      - service
+      - deployment
+    service: "{{ lookup('file', base_dir+'/sample/echoserver/service.yaml') | from_yaml }}"
+    deployment: "{{ lookup('file', base_dir+'/sample/echoserver/deployment.yaml') | from_yaml }}"
+
+  - name: sample-alb-pub
+    namespace: sample
+    resources:
+      - ingress
+    ingress: "{{ lookup('template', base_dir+'/sample/alb-pub/ingress.yaml.j2') | from_yaml }}"
+
+  - name: sample-alb-pvt
+    namespace: sample
+    resources:
+      - ingress
+    ingress: "{{ lookup('template', base_dir+'/sample/alb-pvt/ingress.yaml.j2') | from_yaml }}"
