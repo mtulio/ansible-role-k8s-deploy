@@ -9,13 +9,13 @@ k8s_resources:
       - namespace
     namespace: "{{ lookup('file', sample_base_dir+'/sample/namespace.yaml') | from_yaml }}"
 
-  - name: webapp
-    namespace: sample
-    resources:
-      - service
-      - replica_set
-    service: "{{ lookup('file', sample_base_dir+'/sample/webapp/service.yaml') | from_yaml }}"
-    replica_set: "{{ lookup('file', sample_base_dir+'/sample/webapp/replica_set.yaml') | from_yaml }}"
+  # - name: webapp
+  #   namespace: sample
+  #   resources:
+  #     - service
+  #     - replica_set
+  #   service: "{{ lookup('file', sample_base_dir+'/sample/webapp/service.yaml') | from_yaml }}"
+  #   replica_set: "{{ lookup('file', sample_base_dir+'/sample/webapp/replica_set.yaml') | from_yaml }}"
 
   - name: echoserver
     namespace: sample
@@ -26,27 +26,27 @@ k8s_resources:
     deployment: "{{ lookup('file', sample_base_dir+'/sample/echoserver/deployment.yaml') | from_yaml }}"
 
   # Guestbook example: https://github.com/kubernetes/kubernetes/examples/guestbook-go/
-  - name: guestbook
-    namespace: sample
-    resources:
-      - controller
-      - service
-      - redis_master_controller
-      - redis_master_service
-      - redis_slave_controller
-      - redis_slave_service
-    controller: "{{ lookup('file', sample_base_dir+'/sample/guestbook/guestbook-controller.json') | from_json }}"
-    service: "{{ lookup('file', sample_base_dir+'/sample/guestbook/guestbook-service.json') | from_json }}"
-    redis_master_controller: "{{ lookup('file', sample_base_dir+'/sample/guestbook/redis-master-controller.json') | from_json }}"
-    redis_master_service: "{{ lookup('file', sample_base_dir+'/sample/guestbook/redis-master-service.json') | from_json }}"
-    redis_slave_controller: "{{ lookup('file', sample_base_dir+'/sample/guestbook/redis-slave-controller.json') | from_json }}"
-    redis_slave_service: "{{ lookup('file', sample_base_dir+'/sample/guestbook/redis-slave-service.json') | from_json }}"
+  # - name: guestbook
+  #   namespace: sample
+  #   resources:
+  #     - controller
+  #     - service
+  #     - redis_master_controller
+  #     - redis_master_service
+  #     - redis_slave_controller
+  #     - redis_slave_service
+  #   controller: "{{ lookup('file', sample_base_dir+'/sample/guestbook/guestbook-controller.json') | from_json }}"
+  #   service: "{{ lookup('file', sample_base_dir+'/sample/guestbook/guestbook-service.json') | from_json }}"
+  #   redis_master_controller: "{{ lookup('file', sample_base_dir+'/sample/guestbook/redis-master-controller.json') | from_json }}"
+  #   redis_master_service: "{{ lookup('file', sample_base_dir+'/sample/guestbook/redis-master-service.json') | from_json }}"
+  #   redis_slave_controller: "{{ lookup('file', sample_base_dir+'/sample/guestbook/redis-slave-controller.json') | from_json }}"
+  #   redis_slave_service: "{{ lookup('file', sample_base_dir+'/sample/guestbook/redis-slave-service.json') | from_json }}"
 
-  - name: kube2iam
-    namespace: sample
-    resources:
-      - daemonset
-    daemonset: "{{ lookup('file', sample_base_dir+'/sample/kube2iam/daemonset.yaml') | from_yaml }}"
+  # - name: kube2iam
+  #   namespace: sample
+  #   resources:
+  #     - daemonset
+  #   daemonset: "{{ lookup('file', sample_base_dir+'/sample/kube2iam/daemonset.yaml') | from_yaml }}"
 
   - name: sample-alb-pub
     namespace: sample
@@ -54,8 +54,8 @@ k8s_resources:
       - ingress
     ingress: "{{ lookup('template', sample_base_dir+'/sample/alb-pub/ingress.yaml.j2') | from_yaml }}"
 
-  - name: sample-alb-pvt
-    namespace: sample
-    resources:
-      - ingress
-    ingress: "{{ lookup('template', sample_base_dir+'/sample/alb-pvt/ingress.yaml.j2') | from_yaml }}"
+  # - name: sample-alb-pvt
+  #   namespace: sample
+  #   resources:
+  #     - ingress
+  #   ingress: "{{ lookup('template', sample_base_dir+'/sample/alb-pvt/ingress.yaml.j2') | from_yaml }}"
