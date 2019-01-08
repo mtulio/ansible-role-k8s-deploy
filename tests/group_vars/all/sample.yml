@@ -48,14 +48,30 @@ k8s_resources:
   #     - daemonset
   #   daemonset: "{{ lookup('file', sample_base_dir+'/sample/kube2iam/daemonset.yaml') | from_yaml }}"
 
-  - name: sample-alb-pub
-    namespace: sample
-    resources:
-      - ingress
-    ingress: "{{ lookup('template', sample_base_dir+'/sample/alb-pub/ingress.yaml.j2') | from_yaml }}"
+  # - name: sample-alb-pub
+  #   namespace: sample
+  #   resources:
+  #     - ingress
+  #   ingress: "{{ lookup('template', sample_base_dir+'/sample/alb-pub/ingress.yaml.j2') | from_yaml }}"
 
   # - name: sample-alb-pvt
   #   namespace: sample
   #   resources:
   #     - ingress
   #   ingress: "{{ lookup('template', sample_base_dir+'/sample/alb-pvt/ingress.yaml.j2') | from_yaml }}"
+
+  # - name: sample-nginx-nlb
+  #   namespace: sample
+  #   resources:
+  #     - ingress
+  #     - cm
+  #   ingress: "{{ lookup('template', sample_base_dir+'/sample/nginx-l4/ingress.yaml.j2') | from_yaml }}"
+  #   cm: "{{ lookup('template', sample_base_dir+'/sample/nginx-l4/cm.yaml.j2') | from_yaml }}"
+  #
+  # - name: sample-nginx-alb
+  #   namespace: sample
+  #   resources:
+  #     - ingress
+  #     - cm
+  #   ingress: "{{ lookup('template', sample_base_dir+'/sample/nginx-l4/ingress.yaml.j2') | from_yaml }}"
+  #   cm: "{{ lookup('template', sample_base_dir+'/sample/nginx-l4/cm.yaml.j2') | from_yaml }}"
