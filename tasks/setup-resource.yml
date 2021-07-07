@@ -1,0 +1,14 @@
+---
+
+- name: "Setup | {{ item_app.name }} | {{ item_res }} | Ser vars"
+  set_fact:
+    dest_file: "{{ eks_deploy_wk_dir }}/{{ item_app.name }}-{{ item_res }}.json"
+    resource_raw: "{{ item_app[item_res] }}"
+
+- name: "Setup | {{ item_app.name }} | {{ item_res }} | Generate config"
+  template:
+    src: generic.yaml.j2
+    dest: "{{ dest_file }}"
+
+- set_fact:
+    deploy_files: "{{ deploy_files + [dest_file] }}"

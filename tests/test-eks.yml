@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  connection: local
+
+  vars:
+    k8s_deploy_sample_alb_subnets_pub: 'subnet-057567fad25538215,subnet-082a0ca42b9118cb5'
+    k8s_deploy_sample_alb_sgs_pub: 'sg-0a26df639a4931b2b'
+    k8s_deploy_sample_alb_subnets_pvt: 'subnet-0555567fad2387215,subnet-08a0ca42b29118cb5'
+    k8s_deploy_sample_alb_sgs_pvt: 'sg-0ab2df639a49b2631'
+
+  roles:
+    - ..

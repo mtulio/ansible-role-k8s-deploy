@@ -1,0 +1,13 @@
+---
+
+- set_fact:
+    deploy_files: []
+
+- include: setup-resource.yml
+  with_items: "{{ item_app.resources }}"
+  when: item_app.resources is defined
+  loop_control:
+    loop_var: item_res
+
+- set_fact:
+    k8s_deploy_resources: "{{ k8s_deploy_resources + [{'name': item_app.name,'files':deploy_files}] }}"

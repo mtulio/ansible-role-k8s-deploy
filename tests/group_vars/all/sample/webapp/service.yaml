@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+  namespace: sample
+spec:
+  selector:
+    app: webapp-pod
+  ports:
+    - name: web
+      port: 80
+      targetPort: 8080
+  type: NodePort

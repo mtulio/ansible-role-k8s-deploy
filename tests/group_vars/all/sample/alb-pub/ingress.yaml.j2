@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: alb-pub
+  namespace: sample
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/tags: Environment=dev,Team=cloud
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
+    alb.ingress.kubernetes.io/subnets: '{{ k8s_deploy_sample_alb_subnets_pub }}'
+    alb.ingress.kubernetes.io/security-groups: '{{ k8s_deploy_sample_alb_sgs_pub }}'
+spec:
+  rules:
+    - host: echoserver.example.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: echoserver
+              servicePort: 80
+#    - host: webapp-service.me
+#      http:
+#        paths:
+#          - path: /path
+#            backend:
+#              serviceName: webapp-service
+#              servicePort: 80
